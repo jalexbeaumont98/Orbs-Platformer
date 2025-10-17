@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Platform
+  - Enemy
+  - Hazard
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Ground
+  - Player
+  - Enemies
+  - Enemy_Projectiles
+  - Player_Projectiles
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2806411199
+    locked: 0
+  - name: Background Effects
+    uniqueID: 660869671
+    locked: 0
+  - name: Objects
+    uniqueID: 3809671647
+    locked: 0
+  - name: Foreground Objects
+    uniqueID: 3744112693
+    locked: 0
+  - name: Effects
+    uniqueID: 2765850769
+    locked: 0
+  - name: Foreground
+    uniqueID: 2676383247
+    locked: 0

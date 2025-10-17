@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aea344e5265c3a45a654b193dd92866, type: 3}
+  m_Name: BasicSphere
+  m_EditorClassIdentifier: 
+  mainSprite: {fileID: 21300000, guid: 0173617da89e3ab43b7837b70ed1ba88, type: 3}
+  projectileData: {fileID: 11400000, guid: 9d8e19e6405ea6940b267f4ba74253b9, type: 2}
