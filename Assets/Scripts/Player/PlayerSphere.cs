@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class PlayerSphere : MonoBehaviour
@@ -10,10 +11,24 @@ public class PlayerSphere : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    void Start()
+    void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
+    }
+    
+    public void Initialize(SphereData data)
+    {
+
+        this.data = data;
+
+        if (data.projectileData.prefab)
+        {
+            projectilePrefab = data.projectileData.prefab;
+        }
+
         spriteRenderer.sprite = data.mainSprite;
+
     }
 
     public void FireProjectile()
@@ -39,5 +54,8 @@ public class PlayerSphere : MonoBehaviour
 
         // Launch it in the direction it’s facing
         proj.Launch();
+
+        if (data.sound)
+            AudioManager.Instance.PlaySound(data.sound.name);
     }
 }

@@ -44,6 +44,7 @@ public class PlayerController : MonoBehaviour
     [Header("Other References")]
     [SerializeField] private Transform respawnPoint;
     [SerializeField] private CinemachineVirtualCameraBase ogCam;
+    [SerializeField] private CinemachineVirtualCameraBase deathCam;
 
     //private refs
     private Rigidbody2D rb;
@@ -52,13 +53,20 @@ public class PlayerController : MonoBehaviour
 
     public static event System.Action<int> OnPlayerHPChange;
 
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
 
-        hp = maxHp;
+    }
+
+    public void SetHP(int hpIn)
+    {
+        hp = hpIn;
+        OnPlayerHPChange?.Invoke(hp);
     }
 
     void Update()
@@ -251,9 +259,10 @@ public class PlayerController : MonoBehaviour
         hp = maxHp;
         OnPlayerHPChange?.Invoke(hp);
         CameraController.GetMainCineCam().Priority = 0;
-        ogCam.Priority = 20;
+        deathCam.Priority = 25;
 
         print("player ded :(");
+        MenuMan.Instance.SetDeathMenu();
     }
 
 

@@ -10,4 +10,5 @@ public class SphereData : ScriptableObject
 
     [Header("Projectile")]
     public ProjectileData projectileData;
+    public SoundData sound;
 }
