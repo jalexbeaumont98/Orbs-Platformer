@@ -11,5 +11,6 @@ public class ProjectileData : ScriptableObject
 
     [Header("Visuals")]
     public Sprite sprite;
+    public GameObject prefab;
     public GameObject hitEffect; // particle or explosion prefab
 }

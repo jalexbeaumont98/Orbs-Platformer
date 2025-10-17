@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aea344e5265c3a45a654b193dd92866, type: 3}
+  m_Name: MissileSphere
+  m_EditorClassIdentifier: 
+  mainSprite: {fileID: 21300000, guid: 7bd1d6e84de28bf4592f3c675955c167, type: 3}
+  projectileData: {fileID: 11400000, guid: c810fab161441d942b3c87f85e904e72, type: 2}

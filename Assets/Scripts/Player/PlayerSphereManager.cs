@@ -7,6 +7,8 @@ public class PlayerSphereManager : MonoBehaviour
 {
     [Header("Orbit Settings")]
     public Transform target;
+    public Transform sphereParent;
+    public GameObject spherePrefab;
     public float radius = 3f;
     public float orbitSpeed = 60f;    // degrees per second
     public float smoothTime = 0.25f;  // higher = less lazy
@@ -28,9 +30,19 @@ public class PlayerSphereManager : MonoBehaviour
     private float nextFireTime = 0f;
     private int sphereIndex = 0;
 
+    void OnEnable()
+    {
+        MenuMan.OnNextLevel += SaveOrbiterData;
+    }
+
+    void OnDisable()
+    {
+        MenuMan.OnNextLevel -= SaveOrbiterData;
+    }
+
     void Start()
     {
-        spheres = new List<PlayerSphere>();
+        spheres ??= new List<PlayerSphere>();
 
         foreach (Transform s in orbiters)
         {
@@ -47,10 +59,11 @@ public class PlayerSphereManager : MonoBehaviour
     {
 
         if (CanShoot()) Shoot();
-       
+
     }
     private bool CanShoot()
     {
+        if (spheres == null || spheres.Count <= 0) return false;
 
         if (Time.time < nextFireTime)
             return false;
@@ -59,7 +72,7 @@ public class PlayerSphereManager : MonoBehaviour
         nextFireTime = Time.time + 1f / fireRate;
         return true;
     }
-    
+
     private void Shoot()
     {
         spheres[sphereIndex].FireProjectile();
@@ -101,8 +114,29 @@ public class PlayerSphereManager : MonoBehaviour
     }
 
 
+    public void AddOrbiter(SphereData data)
+    {
+        spheres ??= new List<PlayerSphere>();
+        
+        PlayerSphere newSphere = Instantiate(spherePrefab, sphereParent).GetComponent<PlayerSphere>();
+        newSphere.Initialize(data);
+        RegisterOrbiter(newSphere.transform);
+
+        fireRate = 1f + fireRate * Mathf.Log10(1f + spheres.Count);
+    }
+
+    public void SaveOrbiterData()
+    {
+        foreach (PlayerSphere s in spheres)
+        {
+            if (s.data)
+                GameState.Instance.RegisterObject(s.data);
+        }
+    }
+
+
     //add an orbiter dynamically
-    public void RegisterOrbiter(Transform newOrbiter)
+    private void RegisterOrbiter(Transform newOrbiter)
     {
         if (!orbiters.Contains(newOrbiter))
         {
@@ -130,6 +164,8 @@ public class PlayerSphereManager : MonoBehaviour
             if (spheres.Contains(sphere))
                 spheres.Remove(sphere);
         }
+
+        Destroy(orbiter);
 
     }
 }

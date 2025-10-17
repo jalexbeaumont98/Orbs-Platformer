@@ -10,16 +10,21 @@ public class Projectile : MonoBehaviour
     [SerializeField] protected SpriteRenderer sr;
     [SerializeField] protected Rigidbody2D rb;
 
-    public void Initialize(ProjectileData data)
+    public virtual void Initialize(ProjectileData data)
     {
         speed = data.speed;
         damage = data.damage;
-        hitEffect = data.hitEffect;
+
+        if (data.hitEffect)
+            hitEffect = data.hitEffect;
 
         sr = GetComponent<SpriteRenderer>();
-        sr.sprite = data.sprite;
+        if (data.sprite)
+            sr.sprite = data.sprite;
 
         rb = GetComponent<Rigidbody2D>();
+
+        print("name:" + gameObject.name + "hasEffect:" + (hitEffect != null));
     }
 
     public void Launch()

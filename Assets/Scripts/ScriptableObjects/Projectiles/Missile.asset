@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67a573f16333774cbef2e9d9cc8db00, type: 3}
+  m_Name: Missile
+  m_EditorClassIdentifier: 
+  speed: 7
+  damage: 1
+  sprite: {fileID: 0}
+  prefab: {fileID: 6897485515047868824, guid: c9983497158fb034eada82b76c5e6f3c, type: 3}
+  hitEffect: {fileID: 171960673169689201, guid: ca6a7e712f661184f9266bb0c22b7fde, type: 3}
